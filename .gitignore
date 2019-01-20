@@ -1,0 +1,7 @@
+main
+.DS_Store
+pkg/
+src/github.com
+src/golang.org
+src/mellium.im
+config/
