@@ -7,6 +7,7 @@ import (
 
   "data/gql"
   "controllers/server"
+  beer "controllers"
 
   "github.com/go-chi/chi"
   "github.com/go-chi/chi/middleware"
@@ -48,6 +49,10 @@ func initializeAPI() *chi.Mux {
     middleware.RedirectSlashes,
     middleware.Recoverer,
   )
+
+  router.Route("/", func(r chi.Router) {
+    r.Mount("/", beer.Routes())
+  })
 
   router.Post("/graphql", s.GraphQL())
 
