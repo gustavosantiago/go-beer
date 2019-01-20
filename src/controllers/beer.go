@@ -12,7 +12,7 @@ import (
 func Routes() *chi.Mux {
   router := chi.NewRouter()
 
-  router.Get("/beers", Index)
+  router.Get("/", Index)
   router.Get("/beers/{id}", Show)
 
   return router
