@@ -2,6 +2,7 @@ package models
 
 import (
   "fmt"
+
   "data/postgres"
 )
 
@@ -37,4 +38,17 @@ func GetBeerById(id string) Beer {
   }
 
   return beer
+}
+
+func GetBeersByName(name string) []Beer {
+  var beers []Beer
+
+  err := postgres.Client.Model(&beers).
+    Where("name LIKE ?", name).Select()
+
+  if err != nil {
+    fmt.Println(err)
+  }
+
+  return beers
 }
